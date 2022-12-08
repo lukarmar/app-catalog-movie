@@ -30,10 +30,10 @@ In order to contribute to the project it will be necessary to make a clone, for 
 
 ```bash
 # Clone this repository
-$ git clone https://github.com/luka-rmar/bootcamp-rocketshoes.git
+$ git clone https://github.com/lukarmar/app-catalog-movie.git
 
 # Access repository
-$ cd ~/bootcamp-rocketshoes
+$ cd ~/app-catalog-movie
 
 # Install dependencies
 $ npm install --silent
