@@ -8,7 +8,10 @@
 
 
 
-> Frontend catalog of the movies.
+
+> Film catalog website in the ranking of the most popular.
+
+> IMDB source
 
 
 ## :robot: Technologies
