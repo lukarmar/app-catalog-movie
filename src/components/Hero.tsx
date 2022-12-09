@@ -76,7 +76,7 @@ const Hero = ({ dataCard }:PropsHero) => {
 const HeroPaginate = ({itemsPerPage = 10}) => {
   const [itemOffset, setItemOffset] = useState(0);
 
-  const { getData, dataCardCatalog, loading } = useCatalogData()
+  const { getData, dataCardCatalog } = useCatalogData()
 
   useEffect(() => {
     getData()
