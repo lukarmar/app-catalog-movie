@@ -20,10 +20,8 @@ interface PropsHero {
 
 const Hero = ({ dataCard }:PropsHero) => {
 
-  const { loading } = useCatalogData()  
+  const { loading } = useCatalogData()
 
-
-  console.log(loading)
   return (
     <Flex
       h="full"
@@ -40,33 +38,34 @@ const Hero = ({ dataCard }:PropsHero) => {
         mx="auto"
         pt={5}
       >
-        <Flex w="full" h="full">
+        <Flex w="full" h="full" >
+          <>
+            {loading ? <Spinner type="spokes" color="#fff"/> :
+            <>
+              {dataCard.length === 0 ? <ListEmpty /> :
 
-          { loading ?  <Spinner type="spokes" color="#fff"/> :
-
-           <>
-            {dataCard.length === 0 ? <ListEmpty /> :
-
-                <Grid
-                  templateColumns={{
-                    base: "repeat(1, 1fr)",
-                    // sm: "repeat(2, 1fr)",
-                    lg: "repeat(2, 1fr)",
-                  }}
-                  gap={6}
-                  rowGap={14}
-                >
-                {
-                dataCard.map((data, index) => (
-                  <GridItem key={(Math.random() * 30).toString()}>
-                    <CardMovie {...data}  />
-                </GridItem>
-                ))
+                  <Grid
+                    templateColumns={{
+                      base: "repeat(1, 1fr)",
+                      // sm: "repeat(2, 1fr)",
+                      lg: "repeat(2, 1fr)",
+                    }}
+                    gap={6}
+                    rowGap={14}
+                  >
+                  {
+                  dataCard.map((data, index) => (
+                    <GridItem key={(Math.random() * 30).toString()}>
+                      <CardMovie {...data}  />
+                  </GridItem>
+                  ))
+                }
+              </Grid>
+              
               }
-            </Grid>
+            </>
             }
-          </>
-          }
+            </>
         </Flex>
       </Flex>
     </Flex>
@@ -84,23 +83,16 @@ const HeroPaginate = ({itemsPerPage = 10}) => {
   },[getData])
 
   const endOffset = itemOffset + itemsPerPage;
-  console.log(`Loading items from ${itemOffset} to ${endOffset}`);
   const currentItems = dataCardCatalog.slice(itemOffset, endOffset);
   const pageCount = Math.ceil(dataCardCatalog.length / itemsPerPage);
 
 
   const handlePageClick = (event: any) => {
     const newOffset = (event.selected * itemsPerPage) % dataCardCatalog.length;
-    console.log(
-      `User requested page number ${event.selected}, which is offset ${newOffset}`
-    );
     setItemOffset(newOffset);
   };
 
   return (
-
-    <>
-    { loading ? <h1>Loading...</h1> :(
       <>
         <Hero dataCard={currentItems} />
         <ReactPaginate
@@ -125,11 +117,9 @@ const HeroPaginate = ({itemsPerPage = 10}) => {
         />
       </>
       )
-}
-    </>
+    }
 
-  )
-}
+
 
 
 

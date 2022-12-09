@@ -38,21 +38,17 @@ const CatalogDataProvider = ({ children }: { children: ReactNode }) => {
 
     api.get('/catalog').then(response => {
       setDataCardCatalog(response.data);
-
+      setLoading(false)
     })    
  
-    setLoading(false)
 
   },[])
 
   const updateData = useCallback(() => {
     setLoading(true)
 
-    api.post('/catalog').then(response => {
-    })
+    api.post('/catalog').then(() => getData())
 
-    getData();
-    setLoading(false)
 
   }, [getData])
 
